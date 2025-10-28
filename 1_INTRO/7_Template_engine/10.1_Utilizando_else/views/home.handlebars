@@ -1,0 +1,14 @@
+<h1>Olá, handlebars!</h1>
+{{#if aproved}}
+    <p>Seu cadastro foi aprovado!</p>
+{{else}}
+    <p>Seu cadastro esta em analise, aguarde retorno em até 24h.</p>
+{{/if}}
+
+<p>Olá {{user.name}} {{user.surname}}, vimos que você tem {{user.age}} anos </p>
+
+{{#if auth}}
+    <p>
+        Usuário {{user.name}} autenticado.<a href="/dashboard">Clique aqui</a> para acessar a área de membros.
+    </p>
+{{/if}}
