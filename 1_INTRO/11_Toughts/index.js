@@ -14,9 +14,11 @@ const User = require('./models/User')
 
 //Import Routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 //Import Controller
 const ToughtController = require("./controllers/ToughtsController")
+const { FORCE } = require("sequelize/lib/index-hints")
 
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
@@ -66,13 +68,13 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/toughts', toughtsRoutes)
+app.use('/', authRoutes)
 
 app.get('/', ToughtController.showToughts)
 
 conn
+    //.sync({force : true})
     .sync()
     .then(() => {
         app.listen(3000)
     })
-
-//PAREI NA 168
